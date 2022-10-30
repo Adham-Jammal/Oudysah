@@ -20,6 +20,8 @@
                     class="bi bi-twitter"></i></a>
             <a href="https://www.instagram.com/oudysah/?igshid=YmMyMTA2M2Y%3D" class="instagram"><i
                     class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/966558442139" class="instagram"><i class="bi bi-whatsapp"></i></a>
+
         </div>
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>

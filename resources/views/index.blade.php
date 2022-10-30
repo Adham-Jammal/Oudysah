@@ -11,10 +11,10 @@
                 <div class="col-lg-6 text-center">
                     <img class="hero-logo lozad" data-src="{{ asset('img/logo.png') }}" alt="logo">
                     <h2> عـيـنٌ أمـعـنـت<span>فـأبـدعـــت </span></h2>
-                    <p> شغف التصوير وصناعة المحتوى صنعت خبرة أكثر من 5 سنوات بأستوديو عديسة للانتاج الفني ، حيث نوثق اللحظة
-                        والحدث بدقة وجودة ذات رؤية ورسالة ملهمة, تعكس أهداف عملائنا ونحقق رؤيتهم يميزنا سرعة الاداء والدقة و
+                    <p> شغف التصوير وصناعة المحتوى صنعت خبرة لأكثر من 5 سنوات باستوديو عديسة للانتاج الفني ، حيث نوثق اللحظة
+                        والحدث بدقة وجودة ذات رؤية ورسالة ملهمة, تعكس أهداف عملائنا ونحقق رؤيتهم,  يميزنا سرعة الاداء والدقة و
                         نساعدك بأفكار تصوير وتصميم أبداعية . </p>
-                    <a href="#" class="btn-get-started">احجز الآن</a>
+                    <a href="https://wa.me/966558442139" class="btn-get-started">احجز الآن</a>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
                         <i class="bi bi-quote icon"></i>
                         <h2>الرؤية</h2>
                         <p>
-                            أن نكون الاختيار الأول لªفراد و المؤسسات حيث مع كل صورة نحكي قصة تعبر عن واقعها بجودة
-                            قياسية ودقة عالية .. هدفنا ا±بتكار و التطوير المستمر لعملنا للوصول إلى هدف يليق بكم .
+                            أن نكون الاختيار الأول للأفراد و المؤسسات حيث مع كل صورة نحكي قصة تعبر عن واقعها بجودة
+                            قياسية ودقة عالية .. هدفنا الابتكار و التطوير المستمر لعملنا للوصول إلى هدف يليق بكم .
                         </p>
                     </div>
                 </div>
@@ -51,10 +51,10 @@
                     <div class="message">
                         <i class="bi bi-quote icon"></i>
                         <h2>الرسالة</h2>
-                        <p> تقديم أفكار إبداعية تمزج ما بين ا±حترافية والتميز وا±لتزام والتجديد ، نعلو بمعايير التصوير و
-                            التصميم حتى نكون من الملهمين ا¤وائل بالمملكة وأن نصنع محتوى ولقطات مطابقة للواقع
-                            ُتحاكي ا¤حداث .. تجمعنا قيم و أهداف سامية و نعمل ¤جل رضاكم و ما يليق بذائقتكم الرائعة ،
-                            ّ يحف ّ زنا ا±يمان و التحدي لتقديم لحظاتكم الجميلة بكل تفرد و إختلاف . </p>
+                        <p> تقديم أفكار إبداعية تمزج ما بين الاحترافية والتميز و الالتزام والتجديد ، نعلو بمعايير التصوير و
+                            التصميم حتى نكون من الملهمين الأوائل بالمملكة وأن نصنع محتوى ولقطات مطابقة للواقع
+                            ُتحاكي ا¤حداث .. تجمعنا قيم و أهداف سامية و نعمل  لرضاكم و ما يليق بذائقتكم الرائعة ،
+                            ّ يحفّزنا الايمان و التحدي لتقديم لحظاتكم الجميلة بكل تفرد و إختلاف . </p>
                     </div>
                 </div>
             </div>
@@ -120,58 +120,43 @@
         <div class="container">
             <div class="section-title">
                 <h2>معرض أعمالنا</h2>
-                <p>في حَدق عملنا على أكثر من ٤٠ مشروع ولدينا تعاون مع عملاء من معظم انحاء المملكة ودول الخليج.</p>
+<p>
+     نفتخر بعرض أعمالنا 
+     التي نعتز بها ,  والتي تمكّنا من خلالها نيل رضى العشرات من العملاء.
+</p>
             </div>
 
             <div class="row">
                 <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                     <ul id="portfolio-flters">
-                        <li data-filter=".filter-photography" class="filter-active">التصوير الفوتوغرافي</li>
-                        <li data-filter=".filter-portraits">تصوير البورتريه</li>
-                        <li data-filter=".filter-products">تصوير المنتجات</li>
+                        @foreach ($galleries as $key => $item)
+                            <li data-filter=".filter-{{$item->id}} " @if(!$key) class="filter-active" @endif> {{$item->title_Ar}} </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 portfolio-item filter-photography">
+                @foreach ($galleries as $key => $item)
+
+                @foreach(json_decode($item->image, true) as $image)
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{$item->id}}">
                     <div class="portfolio-wrap">
-                        <img data-src="{{ asset('img/logo.png') }}" class="img-fluid lozad" alt="">
+                        <img data-src="{{ Voyager::image($image) }}" class="img-fluid lozad" alt="">
                         <div class="portfolio-info">
-                            <h4>التصوير الفوتوغرافي </h4>
-                            <p>وصف الصورة</p>
+                            {{-- <h4>التصوير الفوتوغرافي </h4> --}}
+                            {{-- <p>وصف الصورة</p> --}}
                         </div>
                         <div class="portfolio-links">
-                            <a href="{{ asset('img/logo.png') }}" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox" title="التصوير الفوتوغرافي"><i class="bi bi-search"></i></a>
+                            <a href="{{ Voyager::image($image) }}" data-gallery="portfolioGallery"
+                                class="portfolio-lightbox" title="{{$item->title_Ar}} "><i class="bi bi-search"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-photography">
-                    <div class="portfolio-wrap">
-                        <img data-src="{{ asset('img/logo.png') }}" class="img-fluid lozad" alt="">
-                        <div class="portfolio-info">
-                            <h4>التصوير الفوتوغرافي </h4>
-                            <p>وصف الصورة</p>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="{{ asset('img/logo.png') }}" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox" title="التصوير الفوتوغرافي"><i class="bi bi-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-portraits">
-                    <div class="portfolio-wrap">
-                        <img data-src="{{ asset('img/logo.png') }}" class="img-fluid lozad" alt="">
-                        <div class="portfolio-info">
-                            <h4>تصوير البورتريه </h4>
-                            <p>وصف الصورة</p>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="{{ asset('img/logo.png') }}" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox" title="تصوير البورتريه"><i class="bi bi-search"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                @endforeach
+
+           
             </div>
         </div>
     </section>
@@ -183,12 +168,11 @@
                 <p>انضم إلينا لتكون بين قائمة أفضل العملاء</p>
             </div>
             <div class="images partners-slider owl-carousel owl-drag owl-theme">
-                <img class="lozad" data-src="{{ asset('img/logo.png') }}" alt="partner-image">
-                <img class="lozad" data-src="{{ asset('img/logo.png') }}" alt="partner-image">
-                <img class="lozad" data-src="{{ asset('img/logo.png') }}" alt="partner-image">
-                <img class="lozad" data-src="{{ asset('img/logo.png') }}" alt="partner-image">
-                <img class="lozad" data-src="{{ asset('img/logo.png') }}" alt="partner-image">
-                <img class="lozad" data-src="{{ asset('img/logo.png') }}" alt="partner-image">
+                @foreach(json_decode($data->success_partners, true) as $image)
+                <img class="lozad" data-src="{{ Voyager::image($image) }}" alt="partner-image">
+
+                @endforeach
+              
             </div>
         </div>
     </section>
